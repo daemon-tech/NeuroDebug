@@ -1,0 +1,6 @@
+Name,Age,Salary,Department,Target
+Alice,25.0,50000.0,HR,1
+Bob,30.0,60000.0,IT,0
+Charlie,,75000.0,IT,1
+David,35.0,,,0
+Eve,40.0,50000.0,Finance,1
