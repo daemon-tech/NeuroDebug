@@ -1,10 +1,10 @@
-import unittest
 from neurodebug.loader import DataLoader
+from neurodebug.analyzer import DataAnalyzer
 
-class TestDataLoader(unittest.TestCase):
-    def test_load_data(self):
-        loader = DataLoader("tests/sample_dataset.csv")
-        self.assertIsNotNone(loader.data)
+loader = DataLoader("tests/sample_dataset.csv")
+data = loader.load_data()
+print(loader.preview_data())
 
-if __name__ == "__main__":
-    unittest.main()
+analyzer = DataAnalyzer(data)
+summary = analyzer.summerize_data()
+print(summary)
