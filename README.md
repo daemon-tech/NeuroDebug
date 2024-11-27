@@ -87,6 +87,59 @@ We welcome contributions from the community! Whether it's fixing bugs, adding fe
 
 ---
 
+### This program will load the dataset, analyze its quality, visualize issues, fix imperfections, and generate a report.
+
+```py
+from loader import DataLoader
+from analyzer import DataAnalyzer
+from fixer import DataFixer
+from visualizer import DataVisualizer
+from reporter import DataReporter
+
+# Step 1: Load the Dataset
+loader = DataLoader("sample_dataset.csv")
+data = loader.load_data()
+
+# Step 2: Analyze Data Quality
+analyzer = DataAnalyzer(data)
+
+# Generate a summary of the dataset
+summary = analyzer.summerize_data()
+print("Data Summary:")
+print(summary)
+
+# Generate a detailed missing values report
+missing_report = analyzer.detailed_report(threshold=0.2)
+print("Missing Values Report:")
+print(missing_report)
+
+# Step 3: Visualize Issues
+visualizer = DataVisualizer(data)
+
+# Visualize missing values
+print("Visualizing Missing Values...")
+visualizer.plot_missing_values()
+
+# Visualize feature distribution (use a valid column name from the dataset, e.g., "Salary")
+print("Visualizing Feature Distribution for 'Salary'...")
+visualizer.plot_feature_distribution(column="Salary")
+
+# Step 4: Fix Imperfections
+fixer = DataFixer(data)
+
+# Impute missing values with mean strategy
+print("Fixing Missing Values...")
+cleaned_data = fixer.fix_missing_values(method="mean")
+print("Missing values fixed. Here's a preview of the cleaned data:")
+print(cleaned_data.head())
+
+# Step 5: Generate a Quality Report
+reporter = DataReporter(issues=[], fixes=[])
+print("Generating Data Quality Report...")
+reporter.generate_quality_report(filepath="data_quality_report.pdf", quality_metrics=missing_report)
+print("Quality report saved as 'data_quality_report.pdf'.")
+``` 
+
 ## 📄 License
 
 This project is open-source and available under the MIT License.
